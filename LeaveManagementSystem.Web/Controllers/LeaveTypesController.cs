@@ -10,9 +10,12 @@ using LeaveManagementSystem.Web.Models.LeaveTypes;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using LeaveManagementSystem.Web.Services;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace LeaveManagementSystem.Web.Controllers
 {
+    [Authorize(Roles = Roles.Administrator)]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeServices _leaveTypeServices;
