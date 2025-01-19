@@ -20,8 +20,8 @@ namespace LeaveManagementSystem.Web
             builder.Services.AddScoped<ILeaveTypeServices, LeaveTypeServices>();
 
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
             builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
