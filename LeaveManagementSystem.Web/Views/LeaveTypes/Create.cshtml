@@ -4,34 +4,90 @@
     ViewData["Title"] = "Create Leave Type";
 }
 
-<h1>Create Leave Type</h1>
+<div class="container py-5">
+    <h1 class="text-center mb-4">Create Leave Type</h1>
+    <hr class="mb-4" />
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="LeaveTypeName" class="control-label"></label>
-                <input asp-for="LeaveTypeName" class="form-control" />
-                <span asp-validation-for="LeaveTypeName" class="text-danger"></span>
-            </div>
-            <br/>
-            <div class="form-group">
-                <label asp-for="NumberOfDays" class="control-label"></label>
-                <input asp-for="NumberOfDays" class="form-control" />
-                <span asp-validation-for="NumberOfDays" class="text-danger"></span>
-            </div>
-            <br/>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-primary">Back to List</a>
-            </div>
-        </form>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <!-- Leave Type Name -->
+                <div class="form-group mb-4">
+                    <label asp-for="LeaveTypeName" class="form-label fw-bold"></label>
+                    <input asp-for="LeaveTypeName" class="form-control rounded-pill shadow-sm" />
+                    <span asp-validation-for="LeaveTypeName" class="text-danger"></span>
+                </div>
+
+                <!-- Number of Days -->
+                <div class="form-group mb-4">
+                    <label asp-for="NumberOfDays" class="form-label fw-bold"></label>
+                    <input asp-for="NumberOfDays" class="form-control rounded-pill shadow-sm" />
+                    <span asp-validation-for="NumberOfDays" class="text-danger"></span>
+                </div>
+
+                <!-- Buttons -->
+                <div class="form-group d-grid gap-2">
+                    <button type="submit" class="btn btn-primary rounded-pill shadow transition-shadow">
+                        <i class="fas fa-save"></i> Create
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary rounded-pill shadow transition-shadow">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
+<!-- Custom CSS -->
+<style>
+    .transition-shadow {
+        transition: box-shadow 0.3s ease;
+    }
+
+        .transition-shadow:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+    .rounded-pill {
+        border-radius: 50px;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+
+    .btn-outline-secondary {
+        border-color: #6c757d;
+        color: #6c757d;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+</style>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

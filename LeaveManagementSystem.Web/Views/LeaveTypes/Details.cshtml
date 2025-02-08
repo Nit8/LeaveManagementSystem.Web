@@ -4,26 +4,85 @@
     ViewData["Title"] = $"{Model.LeaveTypeName} Details";
 }
 
-<h1>Leave Type Details for @Model.LeaveTypeName</h1>
+<div class="container py-5">
+    <h1 class="text-center mb-4">Leave Type Details for @Model.LeaveTypeName</h1>
+    <hr class="mb-4" />
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LeaveTypeName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LeaveTypeName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumberOfDays)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NumberOfDays)
-        </dd>
-    </dl>
+    <!-- Details Section -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <dl class="row">
+                <!-- Leave Type Name -->
+                <dt class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.LeaveTypeName)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.LeaveTypeName)
+                </dd>
+
+                <!-- Number of Days -->
+                <dt class="col-sm-3 fw-bold">
+                    @Html.DisplayNameFor(model => model.NumberOfDays)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.NumberOfDays)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-4 text-center">
+        <a asp-action="Edit" asp-route-id="@Model?.LeaveTypeId" class="btn btn-warning rounded-pill shadow transition-shadow">
+            <i class="fas fa-edit"></i> Edit
+        </a>
+        <a asp-action="Index" class="btn btn-primary rounded-pill shadow transition-shadow">
+            <i class="fas fa-arrow-left"></i> Back to List
+        </a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.LeaveTypeId" class="btn btn-warning">Edit</a> |
-    <a asp-action="Index" class="btn btn-primary">Back to List</a>
-</div>
+
+<!-- Custom CSS -->
+<style>
+    .transition-shadow {
+        transition: box-shadow 0.3s ease;
+    }
+
+        .transition-shadow:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+    .rounded-pill {
+        border-radius: 50px;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border: none;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+        }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+</style>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
